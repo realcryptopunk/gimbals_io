@@ -1,0 +1,89 @@
+@keyframes spinwords {
+    0%{
+        transform: translateY(25%);
+    }
+    12% {
+        transform: translateY(-5%);
+    }
+    25% {
+        transform: translateY(0%);  /*2 is visible*/
+    }
+    37% {
+        transform: translateY(-30%);
+    }
+    50% {
+        transform: translateY(-25%);
+    }
+    62.5% {
+        transform: translateY(-55%);
+    }
+    75% {
+        transform: translateY(-50%);
+    }
+    87.5% {
+        transform: translateY(-80%);
+    }
+    95% {
+        transform: translateY(-75%);
+    }
+    100% {
+        transform: translateY(-100%)
+    }
+
+
+  
+  }
+  .wordChangerContainer {
+    height: 5rem; /* Adjust the height to match the font size */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .wordChanger > div {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .wordChanger {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(#fb6d8e, #f21960); /* Gradient from #f21960 to a lighter red */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Make the text color transparent so the background gradient shows through */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: spinwords 10s ease-in-out infinite;
+  }
+  
+  .wordColor1 {
+    background: linear-gradient(180deg, #f36534 25%, #F69F27 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .wordColor2 {
+    background: linear-gradient(180deg, #5EA2EF 25%, #0072F5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .wordColor3 {
+    background: linear-gradient(180deg, #6FEE8D 25%, #17c964 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .wordColor4 {
+    background: linear-gradient(180deg, #bc5eef 25%, #e500f5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }

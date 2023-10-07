@@ -62,9 +62,9 @@ export const authOptions: NextAuthOptions = {
   ],
   theme: {
     colorScheme: "auto", // "auto" | "dark" | "light"
-    brandColor: "", // Hex color code
-    logo: "", // Absolute URL to image
-    buttonText: "" // Hex color code
+    brandColor: "#F21161", // Hex color code
+    logo: "/favicon.ico", // Absolute URL to image
+    buttonText: "#FFFFFF" // Hex color code
   }
 };
 
