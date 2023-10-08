@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import {
   Navbar,
   Button,
@@ -21,6 +20,10 @@ import { AcmeLogo } from "./AcmeLogo";
 import { SearchIcon } from "./SearchIcon";
 import { ThemeSwitch } from "./ThemeSwitcher";
 import { signIn, signOut, useSession } from "next-auth/react";
+import React, { useState, type ChangeEvent, type KeyboardEvent } from "react";
+import { useRouter } from "next/router";
+
+
 
 function AuthButton() {
   const { data: session } = useSession();
@@ -56,6 +59,29 @@ export default function Nav() {
     "Log Out",
     "Newsletter",
   ];
+
+  const [searchInput, setSearchInput] = useState("");
+  const router = useRouter();
+
+  const handleSearch = async () => {
+    try {
+      await router.push({
+        pathname: "/SearchPage",
+        query: { q: searchInput },
+      });
+    } catch (error) {
+      console.error("Error navigating to search page:", error);
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      void handleSearch();
+    }
+  };
+  
+
+
 
   return (
     <Navbar
@@ -119,6 +145,7 @@ export default function Nav() {
               }
               href="#"
               size="lg"
+              onClick={item === "Log Out" ? () => signOut() : undefined}
             >
               {item}
             </Link>
@@ -138,6 +165,10 @@ export default function Nav() {
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setSearchInput(e.target.value)
+          }
+          onKeyDown={handleKeyDown}
         />
       </NavbarContent>
 
@@ -152,7 +183,7 @@ export default function Nav() {
             >
               Share Your Work
             </Button>
-            <Dropdown placement="bottom-end">
+            <Dropdown backdrop="blur" placement="bottom-end">
               <DropdownTrigger>
                 <Avatar
                   isBordered
@@ -170,11 +201,32 @@ export default function Nav() {
               <DropdownMenu aria-label="Profile Actions" variant="flat">
                 <DropdownItem key="profile" className="h-14 gap-2">
                   <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold">{session?.user?.email ?? "Default Email"}</p>
+                  <p className="font-semibold">
+                    {session?.user?.name ?? "Default Email"}
+                  </p>
                 </DropdownItem>
-                <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="analytics">Analytics</DropdownItem>
-                <DropdownItem key="logout" color="danger">
+                <DropdownItem key="settings">
+                  <Link href="/settings">
+                    <a>Settings</a>
+                  </Link>
+                </DropdownItem>
+                <DropdownItem  key="profile">
+                  <Link  href="/profile">
+                    <a>Profile</a>
+                  </Link>
+                </DropdownItem>
+                <DropdownItem  key="feedback">
+                  <Link  href="mailto:gimbalsbiz@gmail.com">
+                    <a>Feedback</a>
+                  </Link>
+                </DropdownItem>
+                <DropdownItem
+                  key="logout"
+                  color="danger"
+                  onPress={() => {
+                    void signOut();
+                  }}
+                >
                   Log Out
                 </DropdownItem>
               </DropdownMenu>
