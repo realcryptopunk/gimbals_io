@@ -1,8 +1,9 @@
-import Link from "next/link";
+
 import { Thumbnail } from "./Thumbnail";
-import { Avatar } from  "@nextui-org/react";
+import { Avatar, Link} from  "@nextui-org/react";
 import Image from "next/image";
 import moment from "moment";
+import { LoadingMessage } from "./ErrorMessage";
 
 
 interface VideoComponentProps {
@@ -18,6 +19,9 @@ interface VideoComponentProps {
     name: string;
   }[];
   refetch?: () => Promise<unknown>;
+  isLoading?: boolean;
+  
+
 }
 
 export function VideoTitle({
@@ -31,7 +35,7 @@ export function VideoTitle({
 }) {
   return (
     <h1
-      className={`max-w-md font-semibold leading-6 text-gray-900 group-hover:text-gray-600 ${
+      className={`max-w-md font-semibold leading-6  ${
         limitSize ? "text-base" : "text-lg"
       } ${limitHeight ? "max-h-12 w-full overflow-hidden" : ""}`}
     >
@@ -42,7 +46,7 @@ export function VideoTitle({
 
 export function UserName({ name }: { name: string }) {
   return (
-    <p className="max-h-6 overflow-hidden text-sm font-semibold leading-6 text-gray-900">
+    <p className="max-h-6 overflow-hidden text-sm font-semibold leading-6">
       {name}
     </p>
   );
@@ -89,18 +93,25 @@ export function VideoInfo({
 export const MuliColumnVideo: React.FC<VideoComponentProps> = ({
   videos,
   users,
+  isLoading,
 }) => (
   <div className=" mx-auto grid grid-cols-1 gap-x-10 gap-y-8 md:mx-0 md:max-w-none md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:max-w-none xl:grid-cols-3 2xl:mx-0 2xl:max-w-none 2xl:grid-cols-3  ">
-    {videos.map((video, index) => {
+    {isLoading ? (
+      <LoadingMessage />
+    ) : (
+    videos.map((video, index) => {
       const user = users[index];
       if (!user) {
         return null;
       }
       return (
-        <Link
+        
+          <Link
           href={`/video/${video.id}`}
-          className="flex flex-col items-start justify-between hover:bg-gray-100"
+          className="flex flex-col items-start justify-between"
           key={video.id}
+          color="foreground"
+          
         >
           <div className="relative w-full">
             <Thumbnail thumbnailUrl={video.thumbnailUrl} />
@@ -116,8 +127,12 @@ export const MuliColumnVideo: React.FC<VideoComponentProps> = ({
             </div>
           </div>
         </Link>
+       
+        
+        
       );
-    })}
+    })
+    )}
   </div>
 );
 

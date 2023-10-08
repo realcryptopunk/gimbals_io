@@ -17,7 +17,17 @@ const Home: NextPage = () => {
 
   const Error = () => {
     if (isLoading) {
-      return <LoadingMessage />;
+      return (
+        <div className="mx-auto grid grid-cols-1 gap-x-10 gap-y-8 md:mx-0 md:max-w-none md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:max-w-none xl:grid-cols-3 2xl:mx-0 2xl:max-w-none 2xl:grid-cols-3 items-center justify-center gap-4 py-8 md:py-10">
+      <LoadingMessage />
+      <LoadingMessage />
+      <LoadingMessage />
+      <LoadingMessage />
+      <LoadingMessage />
+      <LoadingMessage />
+      
+      </div>
+      );
     } else if (error ?? !data) {
       return (
         <ErrorMessage
