@@ -85,7 +85,7 @@ export function VideoInfo({
         <span> Views</span>
       </p>
       <li className="pl-2 text-sm text-gray-500"></li>
-      <p className=" text-gray-600">4</p>
+      <p className=" text-gray-600">{moment(createdAt).fromNow()}</p>
     </div>
   );
 }
@@ -136,3 +136,41 @@ export const MuliColumnVideo: React.FC<VideoComponentProps> = ({
   </div>
 );
 
+export const SingleColumnVideo: React.FC<VideoComponentProps> = ({
+  videos,
+  users,
+  isLoading,
+}) => (
+  <div className=" mx-auto grid grid-cols-1 gap-x-10 gap-y-8 md:mx-0 md:max-w-none md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:max-w-none xl:grid-cols-3 2xl:mx-0 2xl:max-w-none 2xl:grid-cols-3  ">
+  {isLoading ? (
+    <LoadingMessage />
+  ) : (
+  videos.map((video, index) => {
+    const user = users[index];
+    if (!user) {
+      return null;
+    }
+    return (
+      <Link href={`/video/${video.id}`} key={video.id} color="foreground">
+        <div className="my-5 flex flex-col gap-4 hover:bg-gray-100 lg:flex-row">
+          <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:w-64 lg:shrink-0">
+            <Thumbnail thumbnailUrl={video.thumbnailUrl} />
+            <div className=" max-w-xl ">
+              <div className="items-top relative mt-4 flex gap-x-4 ">
+                <Avatar src={user.image || ""} />
+                <div className="w-full">
+                  <VideoTitle title={video.title} limitHeight={true} />
+                  <VideoInfo views={video.views} createdAt={video.createdAt} />
+                  <UserName name={user.name || ""} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </Link>
+    )
+  }
+  )
+  )}
+  </div>
+);
