@@ -231,11 +231,12 @@ export default function Nav() {
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-            <ThemeSwitch />
+          
           </>
         ) : (
           <AuthButton />
         )}
+          <ThemeSwitch />
       </NavbarContent>
     </Navbar>
   );

@@ -108,22 +108,22 @@ export default function CommentSection({
               )
               .map(({ user, comment }) => (
                 <div className="my-6" key={comment.id}>
-                  <div className="my-4 border-t border-gray-200" />
+                  <div className="my-4 border-t dark:border-gray-700 border-gray-200" />
                   <div className="flex gap-2">
                     <UserImage image={user.image ?? ""} />
                     <div className="flex w-full flex-col text-sm ">
                       <div className="flex flex-col ">
                         <div className="flex flex-row gap-2  ">
-                          <p className="w-max font-semibold leading-6 text-gray-900">
+                          <p className="w-max font-semibold leading-5 ">
                             {user.name}
                           </p>
-                          <p className=" text-gray-600">
+                          <p className="text-xs dark:text-gray-300 text-gray-800" >
                             {moment(comment.createdAt).fromNow()}
                           </p>
                         </div>
-                        <p className="text-gray-600">{user.handle}</p>
+                       
                       </div>
-                      <p className="my-2 text-gray-600">{comment.message}</p>
+                      <p className="my-2">{comment.message}</p>
                     </div>
                   </div>
                 </div>

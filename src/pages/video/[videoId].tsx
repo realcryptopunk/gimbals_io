@@ -89,7 +89,7 @@ const VideoPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <main className="mx-auto lg:flex justify-center ">
+      <main className="flex lg:flex max-width justify-center gap-4" style={{ maxWidth: '1600px', margin: '0 auto' }}>
           {errorTypes ? (
             <DataError />
           ) : (
@@ -123,7 +123,7 @@ const VideoPage: NextPage = () => {
         </div>
       
     
-        
+        <div className="flex gap-1">
         <FollowButton 
         followingId={video.userId}
         viewer={{hasFollowed: viewer.hasFollowed}}/>
@@ -135,6 +135,7 @@ const VideoPage: NextPage = () => {
         }}
         viewer={{hasLiked: viewer.hasLiked, hasDisliked: viewer.hasDisliked}}
         />
+        </div>
       </CardHeader>
       <CardBody className="px-3 py-0 text-small">
       <VideoInfo
