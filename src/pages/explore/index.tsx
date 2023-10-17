@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Wordchanger from "~/components/Wordchanger/wordchanger";
 import CatNavbar from "~/components/Catnavbar/catnavbar";
-import Layout from "~/components/layout";
+import Layout from "~/components/Layout";
 import { Input } from "@nextui-org/react";
 import { Search } from "lucide-react";
 

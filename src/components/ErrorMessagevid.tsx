@@ -27,9 +27,9 @@ export function ErrorMessage({
 
 export function LoadingMessage() {
   return (
-    <div className="flex flex-col items-start justify-between">
+    <div className="flex flex-col items-center justify-between">
     <div className="relative w-full">
-    <Card className="w-[500px] h-[320px] space-y-5 p-4 bg-transparent" radius="lg">
+    <Card className="w-[5500px] h-[320px] space-y-5 p-4 bg-transparent" radius="lg">
       <Skeleton  className="rounded-2xl">
         <div className="h-[220px] rounded-lg max-w-xl  bg-secondary"></div>
       </Skeleton>

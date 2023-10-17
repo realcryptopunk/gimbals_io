@@ -41,6 +41,12 @@ export const videoRouter = createTRPCRouter({
       engagementType: EngagementType.LIKE,
     },
   });
+  const dislikes = await ctx.db.videoEngagement.count({
+      where: {
+        videoId: video.id,
+        engagementType: EngagementType.DISLIKE,
+      },
+  });
   const views = await ctx.db.videoEngagement.count({
     where: {
       videoId: video.id,
@@ -48,10 +54,52 @@ export const videoRouter = createTRPCRouter({
     },
   });
   const userWithFollowers = {...user, followers};
-  const videoWithLikes = {...video, likes, views};
-  const commentsWithUsers = comments.map(({user, ...comment}) => ({...comment, user}));
-    
-  return { video: videoWithLikes, user: userWithFollowers, comments: commentsWithUsers };
+  const videoWithLikes = {...video, likes, views, dislikes};
+  const commentsWithUsers = comments.map(({user, ...comment}) => ({
+    user, comment,
+  }));
+
+  let viewerHasFollowed = false;
+  let viewerHasLiked = false;
+  let viewerHasDisliked = false;
+
+  if (input.viewerId && input.viewerId !== "") {
+    viewerHasLiked =  !!(await ctx.db.videoEngagement.findFirst({
+      where: {
+        videoId: input.id,
+        userId: input.viewerId,
+        engagementType: EngagementType.LIKE,
+      },
+    }));
+    viewerHasDisliked =  !!(await ctx.db.videoEngagement.findFirst({
+      where: {
+        videoId: input.id,
+        userId: input.viewerId,
+        engagementType: EngagementType.DISLIKE,
+      },
+    }));
+    viewerHasFollowed =  !!(await ctx.db.followEngagement.findFirst({
+      where: {
+        followingId: rawVideo.userId,
+        followerId: input.viewerId,
+      },
+    }));
+  }else {
+      viewerHasFollowed = false;
+      viewerHasLiked = false;
+      viewerHasDisliked = false;
+    }
+    const viewer = {
+      hasLiked: viewerHasLiked,
+      hasDisliked: viewerHasDisliked,
+      hasFollowed: viewerHasFollowed,
+    }
+  
+  return { 
+    video: videoWithLikes, 
+    user: userWithFollowers, 
+    comments: commentsWithUsers, 
+    viewer };
 
 }),
 

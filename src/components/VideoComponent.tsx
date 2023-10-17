@@ -80,12 +80,12 @@ export function VideoInfo({
 }) {
   return (
     <div className="mt-1 flex max-h-6 items-start overflow-hidden text-sm">
-      <p className=" text-gray-600">
+      <p >
         {views}
         <span> Views</span>
       </p>
       <li className="pl-2 text-sm text-gray-500"></li>
-      <p className=" text-gray-600">{moment(createdAt).fromNow()}</p>
+      <p>{moment(createdAt).fromNow().charAt(0).toUpperCase() + moment(createdAt).fromNow().slice(1)}</p>
     </div>
   );
 }

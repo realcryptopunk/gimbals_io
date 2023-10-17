@@ -90,8 +90,8 @@ import {
   // Use these functions where you need to update the currentUserId and currentVideoId
   const getNextVideoId = generateNextId(1, 31);
   const getNextUserId = generateNextId(164, 178);
-  const cloudinaryName = process.env.NEXT_PUBLIC_CLOUDINARY_NAME ?? "";
-  
+  const cloudinaryName = process.env.NEXT_PUBLIC_CLOUDINARY_NAME ?? "";  
+
   async function main() {
     // Delete all records from tables
     await prisma.user.deleteMany();

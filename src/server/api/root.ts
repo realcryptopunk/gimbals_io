@@ -1,5 +1,8 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 import { videoRouter } from "./routers/video";
+import { userRouter } from "./routers/user";
+import { videoEngagementRouter } from "./routers/videoEngagements";
+import { commentRouter } from "./routers/comment";
 
 
 /**
@@ -8,8 +11,10 @@ import { videoRouter } from "./routers/video";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-
+  videoEngagement: videoEngagementRouter,
+  user: userRouter,
   video: videoRouter,
+  comment: commentRouter,
 
 });
 

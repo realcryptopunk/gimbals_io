@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { api } from "~/utils/api";
 import { useRouter } from "next/router";
-import Layout from "~/components/layout";
+import Layout from "~/components/Layout";
 
 import { type NextPage } from "next";
 import { LoadingMessage, ErrorMessage } from "~/components/ErrorMessage";

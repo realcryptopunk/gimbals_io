@@ -179,7 +179,7 @@ export default function Nav() {
               className="hidden sm:flex "
               color="danger"
               variant="shadow"
-              radius="md"
+              radius="full"
             >
               Share Your Work
             </Button>
