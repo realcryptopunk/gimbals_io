@@ -53,11 +53,11 @@ export default function Nav() {
   const { data: session } = useSession();
 
   const menuItems = [
-    "Explore",
+    "Home",
     "Find Talent",
     "Find Jobs",
-    "Log Out",
     "Newsletter",
+    "Log Out",
   ];
 
   const [searchInput, setSearchInput] = useState("");
@@ -143,7 +143,7 @@ export default function Nav() {
                   ? "danger"
                   : "foreground"
               }
-              href="#"
+              href={`/${item.replace(/\s+/g, "-").toLowerCase()}`}
               size="lg"
               onClick={item === "Log Out" ? () => signOut() : undefined}
             >
