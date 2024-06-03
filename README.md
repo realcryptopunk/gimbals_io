@@ -1,29 +1,30 @@
-# Create T3 App
+# Gimbals Io - T3 App
+https://gimbals-io.vercel.app/
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Inspiration/Problem
+Inspired by the creators of Dribbly, who provided a portfolio and job hunting platform for UI/UX designers, Gimbals attempts to fill that role for the Videographer and Video Editing industry. 
 
-## What's next? How do I make an app with this?
+## What is Gimbals.io 
+It allows users to showcase their work, connect with potential clients, and collaborate with other creatives in the industry. Gimbals.io acts as a hub for visual storytellers to grow their careers.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Technology Stack
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### Front End
+- NextJS
+- TailwindCSS
+- Shadcn
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Backend
+- Node
+- Prisma
+- Railway
 
-## Learn More
+## Homescreen
+Users can upload videos and they are posted on the home page for recruiters to explore.
+<a href="https://ibb.co/H2JJ24L"><img src="https://i.ibb.co/thddhKw/Screenshot-2024-06-03-at-6-27-00-PM.png" alt="Screenshot-2024-06-03-at-6-27-00-PM" border="0" /></a>
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Video Page
+Users can view, like, or comment on uploaded videos to build a community or a fanbase. 
+<a href="https://ibb.co/tDnWt6C"><img src="https://i.ibb.co/pdN98TX/Screenshot-2024-06-03-at-6-27-37-PM.png" alt="Screenshot-2024-06-03-at-6-27-37-PM" border="0"></a>
+<a href="https://ibb.co/QXMWYVj"><img src="https://i.ibb.co/hCVG2N1/Screenshot-2024-06-03-at-6-29-14-PM.png" alt="Screenshot-2024-06-03-at-6-29-14-PM" border="0"></a>
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
-# gimbals_io
