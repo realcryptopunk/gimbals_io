@@ -119,16 +119,6 @@ export default function Nav() {
             Explore
           </Button>
         </NavbarItem>
-        <NavbarItem>
-          <Button href="/talent" as={Link} color="default" variant="light">
-            Hire Talent
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button href="/jobs" as={Link} color="default" variant="light">
-            Jobs
-          </Button>
-        </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>

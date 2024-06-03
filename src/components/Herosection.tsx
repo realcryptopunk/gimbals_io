@@ -18,28 +18,7 @@ export default function HeroSection() {
       </div>
 
       <div className="flex gap-3">
-        <Link
-          as={NextLink}
-          href="/"
-          className={`${buttonStyles({
-            color: "danger",
-            radius: "full",
-            variant: "shadow",
-          })} font-semibold`}
-        >
-          Find a job
-        </Link>
-        <Link
-          as={NextLink}
-          href="/"
-          className={`${buttonStyles({
-            color: "default",
-            radius: "full",
-            variant: "flat",
-          })} font-semibold`}
-        >
-          Post a job
-        </Link>
+    
       </div>
     </section>
   );

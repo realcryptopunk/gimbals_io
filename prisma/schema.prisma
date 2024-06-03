@@ -184,3 +184,15 @@ enum EngagementType {
   FOLLOW
   VIEW
 }
+
+model JobPosting {
+  id String @id @default(uuid())
+  name String
+  description String
+  Salary Float @default(0)
+  location String
+  author String
+  img String?
+  employmentType String?
+  createdAt DateTime @default(now())
+}
